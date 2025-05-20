@@ -61,3 +61,4 @@ C:\Users\LENOVO\Desktop\GestionMuni\webApi\bin\Debug\net9.0\runtimes\win-x64\nat
 C:\Users\LENOVO\Desktop\GestionMuni\webApi\bin\Debug\net9.0\runtimes\win-x64\native\krb5_64.dll
 C:\Users\LENOVO\Desktop\GestionMuni\webApi\bin\Debug\net9.0\runtimes\win-x64\native\krbcc64.dll
 C:\Users\LENOVO\Desktop\GestionMuni\webApi\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\LENOVO\Desktop\GestionMuni\webApi\obj\Debug\net9.0\webApi.sourcelink.json

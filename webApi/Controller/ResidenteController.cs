@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using webApi.Models;
 using webApi.Repository.Interfaces;
 namespace webApi.Controller;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class ResidenteController : ControllerBase
 {

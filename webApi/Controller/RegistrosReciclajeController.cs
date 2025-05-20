@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using webApi.Models;
 using webApi.Repository.Interfaces;
@@ -5,6 +6,7 @@ using webApi.Repository.Interfaces;
 namespace webApi.Controller;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class RegistrosReciclajeController : ControllerBase
 {

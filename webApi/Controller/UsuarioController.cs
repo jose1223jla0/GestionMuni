@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using webApi.Dto;
 using webApi.Models;
@@ -5,6 +6,7 @@ using webApi.Repository.Interfaces;
 namespace gestionApi.Controller;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class UsuarioController : ControllerBase
 {
