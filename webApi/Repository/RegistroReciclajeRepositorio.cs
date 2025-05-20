@@ -23,8 +23,8 @@ public class RegistroReciclajeRepositorio : IRegistroReciclajeRepositorio
         {
             throw new InvalidOperationException("El registro ya existe.");
         }
-        string mysql = "INSERT INTO RegistrosDeReciclaje (IdResiduo, IdUsuario, CantidadReciclada, FechaRegistro) " +
-                       "VALUES (@IdResiduo, @IdUsuario, @CantidadReciclada, @FechaRegistro)";
+        string mysql = "INSERT INTO RegistrosDeReciclaje (IdResidente, IdResiduo, PesoKilogramo, FechaRegistro, TicketsGanados) " +
+                       "VALUES (@IdResidente, @IdResiduo, @PesoKilogramo, @FechaRegistro, @TicketsGanados)";
 
         registrosDeReciclaje.IdRegistrosReciclaje = await _db.ExecuteScalarAsync<int>(mysql, registrosDeReciclaje);
         return registrosDeReciclaje;
@@ -42,7 +42,7 @@ public class RegistroReciclajeRepositorio : IRegistroReciclajeRepositorio
 
         string mysql = "DELETE FROM RegistrosDeReciclaje WHERE IdRegistrosReciclaje = @IdRegistrosReciclaje";
         await _db.ExecuteAsync(mysql, new { IdRegistrosReciclaje = idRegistroReciclaje });
-        
+
     }
 
     public async Task<RegistrosDeReciclaje> GetRegistrosDeReciclaje(int idRegistroReciclaje)
@@ -77,7 +77,7 @@ public class RegistroReciclajeRepositorio : IRegistroReciclajeRepositorio
         {
             throw new InvalidOperationException("El registro de reciclaje no existe.");
         }
-        string mysql = "UPDATE RegistrosDeReciclaje SET IdResiduo = @IdResiduo, IdUsuario = @IdUsuario, CantidadReciclada = @CantidadReciclada, FechaRegistro = @FechaRegistro " +
+        string mysql = "UPDATE RegistrosDeReciclaje SET IdResidente = @IdResidente, IdResiduo = @IdResiduo, PesoKilogramo = @PesoKilogramo, FechaRegistro = @FechaRegistro, TicketsGanados= @TicketsGanados" +
                        "WHERE IdRegistrosReciclaje = @IdRegistrosReciclaje";
 
         await _db.ExecuteAsync(mysql, registrosDeReciclaje);
