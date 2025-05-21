@@ -12,6 +12,20 @@ var builder = WebApplication.CreateBuilder(args);
  Inicio de area de servicio
 ===========================================================================================  */
 //builder.Services.AddOpenApi();
+var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")?.Split(",");
+/*==========================================================================================
+ Cors para angular
+===========================================================================================  */
+builder.Services.AddCors(opciones =>
+{
+    opciones.AddDefaultPolicy(politica =>
+    {
+        if (origenesPermitidos != null)
+        {
+            politica.WithOrigins(origenesPermitidos).AllowAnyHeader().AllowAnyMethod();
+        }
+    });
+});
 
 /*==========================================================================================
  uso del jwt
