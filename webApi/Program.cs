@@ -3,6 +3,7 @@ using gestionApi.Repository;
 using gestionApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using webApi.Hubs;
 using webApi.Repository;
 using webApi.Repository.Interfaces;
 using webApi.Services.Interfaces;
@@ -26,6 +27,8 @@ builder.Services.AddCors(opciones =>
         }
     });
 });
+
+builder.Services.AddSignalR();
 
 /*==========================================================================================
  uso del jwt
@@ -78,5 +81,5 @@ app.MapControllers();
 /*==========================================================================================
  fin de area de middleware
 ===========================================================================================  */
+app.MapHub<UbicacionHub>("/ubicacionHub");
 app.Run();
-

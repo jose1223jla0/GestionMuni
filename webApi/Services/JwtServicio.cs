@@ -32,8 +32,8 @@ public class JwtServicio : IJwtServicio
             Subject = new ClaimsIdentity(claims),
             Expires = DateTime.UtcNow.AddDays(1),
             SigningCredentials = credenciales,
-            Issuer = "http://localhost:4200",  
-            Audience = "http://localhost:4200" 
+            Issuer = "http://localhost:8100",  
+            Audience = "http://localhost:8100" 
         };
         JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
         SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);

@@ -5,6 +5,7 @@ using webApi.Repository.Interfaces;
 namespace gestionApi.Controller;
 
 [ApiController]
+
 [Route("api/[controller]")]
 public class UsuarioController : ControllerBase
 {
@@ -15,25 +16,19 @@ public class UsuarioController : ControllerBase
     }
 
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<GetUsuarioDto>>> GetUsuarios()
     {
-        IEnumerable<Usuario> usuarios = await _usuarioRepositorio.GetUsuarios();
-        if (usuarios == null || !usuarios.Any())
+    
+        IEnumerable<GetUsuarioDto> resultado = await _usuarioRepositorio.GetUsuarios();
+        if (resultado == null || !resultado.Any())
         {
             return NotFound("No se encontraron usuarios.");
         }
-        // Convertir a DTOs
-        IEnumerable<GetUsuarioDto> usuariosDto = usuarios.Select(u => new GetUsuarioDto
-        {
-            IdUsuario = u.IdUsuario,
-            IdRol = u.IdRol,
-            NombreUsuario = u.NombreUsuario,
-            EstadoUsuario = u.EstadoUsuario,
-            FechaCreacionUsuario = u.FechaCreacionUsuario
-        });
-        return Ok(usuariosDto);
+        return Ok(resultado);
     }
+
 
     [HttpGet]
     [Route("{id:int}")]

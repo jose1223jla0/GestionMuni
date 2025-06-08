@@ -88,5 +88,4 @@ public class ResidenteController : ControllerBase
             return StatusCode(500, new { mensaje = "Ocurrió un error inesperado." });
         }
     }
-
 }

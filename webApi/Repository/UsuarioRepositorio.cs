@@ -1,6 +1,7 @@
 using System.Data;
 using Dapper;
 using MySql.Data.MySqlClient;
+using webApi.Dto;
 using webApi.Models;
 using webApi.Repository.Interfaces;
 
@@ -56,10 +57,15 @@ public class UsuarioRepositorio : IUsuarioRepositorio
         return resultado;
     }
 
-    public async Task<IEnumerable<Usuario>> GetUsuarios()
+    public async Task<IEnumerable<GetUsuarioDto>> GetUsuarios()
     {
-        string mysql = "SELECT * FROM Usuario";
-        IEnumerable<Usuario> resultado = await _bd.QueryAsync<Usuario>(mysql);
+
+        string mysql = @"SELECT u.IdUsuario,u.NombreUsuario,u.Contrasena,u.EstadoUsuario,u.FechaCreacionUsuario,r.NombreRol
+                        FROM Usuario u
+                        JOIN ROL r ON u.IdRol = r.IdRol;";
+        IEnumerable<GetUsuarioDto> resultado = await _bd.QueryAsync<GetUsuarioDto>(mysql);
         return resultado;
     }
+    
 }
+
